@@ -16,15 +16,15 @@ require_relative('models/space_cowboys.rb')
     })
 
 
-    cowboy1.save()
+    # cowboy1.save()
 
 
 
-    cowboy1.name = 'Spock'
-    cowboy1.update
+    # cowboy1.name = 'Spock'
+    # cowboy1.update
 
 
-    cowboy1.delete($2)
+    # cowboy1.delete($7)
 
 
 

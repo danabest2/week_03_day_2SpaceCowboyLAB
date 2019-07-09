@@ -2,6 +2,7 @@ require("pg")
 
 
 class SpaceCowboy
+attr_reader
 
 attr_accessor :id, :name, :species, :bounty_value, :danger_level, :last_known_location, :homewworld, :favourite_weapon, :cashed_in, :collected_by
 
@@ -43,14 +44,18 @@ attr_accessor :id, :name, :species, :bounty_value, :danger_level, :last_known_lo
 
   end
 
-  def delete(id)
-    db = PG.connect({ dbname: 'space_cowboy', host: 'localhost'})
-    sql = 'DELETE FROM space_cowboy WHERE id = $7;'
+
+  def self.delete(id)
+    db = PG.connect({dbname: 'space_cowboy', host: 'localhost'})
+    sql = "DELETE FROM space_cowboy
+    WHERE id = $1"
     values = [id]
-    db.prepare('delete', sql)
-    db.exec_prepared('delete', values)
-    db.close
+    db.prepare("delete_one", sql)
+    db.exec_prepared("delete_one", values)
+    db.close()
 
   end
+
+#
 
 end
